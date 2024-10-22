@@ -10,4 +10,17 @@ import 'primeflex/primeflex.css';
 const app = createApp(App);
 app.use(PrimeVue);
 app.use(ToastService);
+
+function requestNotificationPermission() {
+    Notification.requestPermission().then(permission => {
+      if (permission === 'granted') {
+        console.log('Notification permission granted.');
+      } else {
+        console.error('Notification permission denied.');
+      }
+    });
+  }
+
+requestNotificationPermission();
+
 app.mount('#app');
