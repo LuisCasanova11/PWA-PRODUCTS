@@ -3,10 +3,8 @@ export async function subscribeToPush() {
     try {
       const registration = await navigator.serviceWorker.ready;
       
-      // Convertir la clave pública VAPID
       const applicationServerKey = urlBase64ToUint8Array('BGm5bKOxOF91wRWsXQrUd9J9C8j7OJn03nrtqW3iL8gJo44bPdOCzxajr1DCDVDyTMQzh3LUQCK-qb4e7N-Hveg');
   
-      // Suscribirse al Push Manager
       const subscription = await registration.pushManager.subscribe({
         userVisibleOnly: true,
         applicationServerKey
@@ -31,7 +29,6 @@ export async function subscribeToPush() {
     }
   }
   
-  // Convertir la clave pública VAPID en Uint8Array
   export function urlBase64ToUint8Array(base64String) {
     const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
     const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
